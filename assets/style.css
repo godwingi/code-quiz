@@ -1,0 +1,73 @@
+:root {
+    --spacecadet: #2E294E;
+    --timberwolf: #EADEDA;
+    --cyberyellow: #FFD400;
+    --dwrose: #D90368;
+    --byzantium: #820263;
+}
+
+/* * {
+    margin: 0px;
+    padding: 0px;
+} */
+
+
+body {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--spacecadet);
+}
+
+.title {
+    padding: 50px;
+    margin: 25px;
+    font-family: "Bangers", sans-serif;
+    box-sizing: border-box;
+    box-shadow: 10px 50px;
+    background-color: var(--timberwolf);
+    width:100%;
+    font-size: 52px;
+    text-align: center;
+}
+
+.start-button {
+    display: inline-block;
+    margin: 40px 0px 100px 0px;
+    padding: 10px;
+    border: solid 5px var(--timberwolf);
+    background-color: var(--cyberyellow);
+    font-size: 36px;
+    font-family: "Didact Gothic", sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: row-reverse,
+}
+.card {
+    border: solid 5px var(--cyberyellow);
+    background-color: var(--timberwolf);
+    margin-bottom: 20px;
+    font-family: "Didact Gothic", sans-serif;
+    font-size: 30px;
+
+}
+
+.section {
+    display:flex;
+}
+
+.reset-button {
+    display: inline-block;
+    padding: 10px;
+    border: solid 5px var(--timberwolf);
+    background-color: var(--cyberyellow);
+    font-size: 20px;
+    font-family: "Didact Gothic", sans-serif;
+}
+
+.mcq-questions {
+    font-size: 20px;
+    font-family: "Didact Gothic", sans-serif;
+}
