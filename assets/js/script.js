@@ -2,8 +2,11 @@ var startButton = document.querySelector(".start-button");
 var timerElement = document.querySelector(".timer-count");
 var timer;
 var timerCount;
-var score = 0;
+var score;
 var results = document.querySelector(".btn");
+//Leaderboard update
+var initialsEl = document.querySelector(".initials");
+var scoreEl = document.querySelector("score");
 
 // Questions that the user will be answering
 var questionsEl = document.querySelector(".mcq-questions");
@@ -25,7 +28,7 @@ var questions = [
          answer2: "querySelector",
          answer3: "appendChild",
          answer4: "textContent",
-         answer:3,
+         answer:4,
     },
     {   question: "True or False is considered what type of variable?",
          answer1: "Undefined",
@@ -58,43 +61,10 @@ function startGame(){
     console.log("Start!");
     startTimer();
     timerCount = 60;
+    score = 0;
     startButton.disabled = true;
     showQuestion();
 }
-
-function showQuestion() {
-    insertQuestion = questions[Math.floor(Math.random() * questions.length)];
-    questionsEl.textContent = insertQuestion.question;
-    answerButtonEl1.textContent = insertQuestion.answer1;
-    answerButtonEl2.textContent = insertQuestion.answer2;
-    answerButtonEl3.textContent = insertQuestion.answer3;
-    answerButtonEl4.textContent = insertQuestion.answer4;
-    if(insertQuestion.answer == questions.answer){
-        answer.dataset = true;
-    };
-    results.addEventListener('click', selectAnswer)
-}
-
-function selectAnswer() {
-    if (insertQuestion.answer == questions.answer){
-        score++;
-        showQuestion()
-    } else {
-        timerCount-10;
-    }
-};
-
-// function timeOut() {
-
-//     conditions: Game over prompt
-// }
-
-// function completeQuiz() {
-
-//     conditions: this is if all question are completed in timeOut, 
-//     initals and score can be set at this point and 
-//     updated into the chart
-// }
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 function startTimer() {
@@ -116,9 +86,55 @@ function startTimer() {
     }, 1000);
   }
 
-  //Leaderboard update
-var initals = document.querySelector(".initals");
-var score = document.querySelector("score");
+  //Display Questions and MCQ Answers
+function showQuestion() {
+    insertQuestion = questions[Math.floor(Math.random() * questions.length)];
+    questionsEl.textContent = insertQuestion.question;
+    answerButtonEl1.textContent = insertQuestion.answer1;
+    answerButtonEl2.textContent = insertQuestion.answer2;
+    answerButtonEl3.textContent = insertQuestion.answer3;
+    answerButtonEl4.textContent = insertQuestion.answer4;
 
-//reset-button for leaderboard
-var resetButton = document.querySelector(".reset-button");
+//Tests each click to the answer
+answerButtonEl1.onclick = selectAnswer();
+answerButtonEl2.onclick = selectAnswer();
+answerButtonEl3.onclick = selectAnswer();
+answerButtonEl4.onclick = selectAnswer();
+
+// Select Answers to determine whether you lose time or move to the next question
+function selectAnswer(event) {
+    var buttonEl = event.target;
+    if (buttonEl.matches('.btn')){
+        console.log("hi")
+    } else {
+        console.log("try again")
+};
+
+}
+}
+
+// If the time runs out or quiz is completed
+function timeOut() {
+    if (timer = 0){
+        questionsEl.textContent = "Game Over! Refresh the page to restart."
+    }
+    else (timer > 0 && questions > questions.length)
+        completeQuiz()
+}
+
+// Storing information to be placed into leaderboard
+function completeQuiz() {
+    var Name = localStorage.setItem.prompt("Please type your initials");
+    localStorage.setItem.score;
+    localStorage.getItem.Name;
+    localStorage.getItem.score;
+    initialsEl.append(Name);
+    scoreEl.append(score);
+    }
+
+
+    ERROR
+    script.js:106 Uncaught TypeError: Cannot read properties of undefined (reading 'target')
+    at selectAnswer (script.js:106:26)
+    at showQuestion (script.js:99:27)
+    at HTMLButtonElement.startGame (script.js:66:5)
