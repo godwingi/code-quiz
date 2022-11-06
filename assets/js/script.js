@@ -104,6 +104,7 @@ answerButtonEl4.onclick = selectAnswer();
 // Select Answers to determine whether you lose time or move to the next question
 function selectAnswer(event) {
     var buttonEl = event.target;
+    event.target = addEventListener('click')
     if (buttonEl.matches('.btn')){
         console.log("hi")
     } else {
@@ -131,10 +132,3 @@ function completeQuiz() {
     initialsEl.append(Name);
     scoreEl.append(score);
     }
-
-
-    ERROR
-    script.js:106 Uncaught TypeError: Cannot read properties of undefined (reading 'target')
-    at selectAnswer (script.js:106:26)
-    at showQuestion (script.js:99:27)
-    at HTMLButtonElement.startGame (script.js:66:5)
