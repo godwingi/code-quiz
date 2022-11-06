@@ -1,12 +1,16 @@
+//quiz variables
 var startButton = document.querySelector(".start-button");
+var results = document.querySelectorAll(".btn");
+console.log(results);
+var score = 0;
+
+//timer variables
 var timerElement = document.querySelector(".timer-count");
 var timer;
 var timerCount;
-var score;
-var results = document.querySelectorAll(".btn");
-console.log(results);
+var isWin = false
 
-//Leaderboard update
+//Leaderboard variables
 var initialsEl = document.querySelector(".initials");
 var scoreEl = document.querySelector(".score");
 
@@ -63,20 +67,35 @@ startButton.addEventListener('click', startGame)
 function startGame(){
     console.log("Start!");
     startTimer();
-    timerCount = 60;
-    score = 0;
+    timerCount = 10;
+    score++;
     startButton.disabled = true;
     showQuestion();
 }
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-function startTimer() {
-    // Sets timer
+
+// The setTimer function starts and stops the timer
+//     Sets timer
+    function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
-    }, 1000);
-  }
+      if (timerCount >= 0) {
+        // Tests if win condition is met
+        if (isWin && timerCount > 0) {
+          // Clears interval and stops timer
+          clearInterval(timer);
+          winGame();
+        }
+      }
+      // Tests if time has run out
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+        loseGame();
+      }
+    }, 1000)
+    };
 
 // Select Answers to determine whether you lose time or move to the next question
 function selectAnswer(event){
@@ -85,13 +104,13 @@ function selectAnswer(event){
     // console.log(questions[0].answer)
     if(buttonEl.innerText === questions[questionsIndex].answer){
         console.log("Correct!")
-        score++;
+        scoreEl.textContent = score++;
         questionsIndex++;
         showQuestion();
     }
      else {
         console.log("Incorrect!")
-        timerCount-15;
+        setTimeout(setInterval -15);
     }
 };
 
@@ -104,27 +123,27 @@ function showQuestion() {
     answerButtonEl3.textContent = questions[questionsIndex].answer3;
     answerButtonEl4.textContent = questions[questionsIndex].answer4;
 }
-
-// If the time runs out or quiz is completed
-function timeOut() {
-    if (timer = 0){
-        questionsEl.textContent = "Game Over! Refresh the page to restart."
-    }
-    else (timer > 0 && questions > questions.length)
-        completeQuiz()
+for(var i = 0; i < results.length; i++) {
+    results[i].addEventListener('click', selectAnswer);
 }
 
-// Storing information to be placed into leaderboard
-function completeQuiz() {
-    var Name = localStorage.setItem.prompt("Please type your initials");
-    localStorage.setItem.score;
-    localStorage.getItem.Name;
-    localStorage.getItem.score;
-    initialsEl.append(Name);
-    scoreEl.append(score);
-    }
+//Win Game Prompt, and Storing Score and Name into Storage
+function winGame (){
+        questionsEl.textContent = "You Win!"
+        var name = window.prompt("Enter your initals");
+        localStorage.setItem("Name", name);
+        localStorage.setItem("score", score);
+        setNameScore()
+}
 
-   for(var i = 0; i < results.length; i++) {
-        results[i].addEventListener('click', selectAnswer);
-    }
-    
+function loseGame (){
+    timerCount = 10;
+    startGame;
+    questionsEl.textContent = "Game Over! Try Again to Save Your Score?"
+}   
+
+//Displaying Stored information into leaderbaord
+function setNameScore (){
+    scoreEl.textContent = localStorage.getItem("score");
+    initialsEl.textContent = localStorage.getItem("Name");
+}
