@@ -4,11 +4,14 @@ var timer;
 var timerCount;
 var timerDecrease;
 var score = 0;
-var results = document.querySelector("#results");
+var results = document.querySelector(".btn");
 
 // Questions that the user will be answering
 var questionsEl = document.querySelector(".mcq-questions");
-var answerButtonEl = document.querySelector(".btn");
+var answerButtonEl1 = document.querySelector("#answer1");
+var answerButtonEl2 = document.querySelector("#answer2");
+var answerButtonEl3 = document.querySelector("#answer3");
+var answerButtonEl4 = document.querySelector("#answer4");
 var insertQuestion = []; //where the 'new' question needs to go
 var questions = [
     {   question: "What is a DOM?",
@@ -48,7 +51,6 @@ var questions = [
     }
 ];
 
-
 //Leaderboard update
 var initals = document.querySelector(".initals");
 var score = document.querySelector("score");
@@ -69,34 +71,26 @@ function startGame(){
 }
 
 function showQuestion() {
-   for (var i = questions; i < questions.length; i++){
     insertQuestion = questions[Math.floor(Math.random() * questions.length)];
-    questionsEl.append(insertQuestion[i].question);
-    if (response == questions[i].answer){
+    questionsEl.textContent = insertQuestion.question;
+    answerButtonEl1.textContent = insertQuestion.answer1;
+    answerButtonEl2.textContent = insertQuestion.answer2;
+    answerButtonEl3.textContent = insertQuestion.answer3;
+    answerButtonEl4.textContent = insertQuestion.answer4;
+    if(questions.answer == answer){
+        insertQuestion.dataset.answer = answer.correct;
+    }
+    results.addEventListener('click', selectAnswer)
+}
+
+function selectAnswer() {
+    if (answer.correct = questions.answer){
         score++;
-        alert("Correct!")
+        showQuestion()
     } else {
         timerCount-10;
     }
-}; 
-
-
-    //for each question...
-
 }
-
-function setNextQuestion() {
-    questions.appendChild(questionsEl);
-    // conditions: if answer wrong, stays on same 
-    // question, have a try again prompt
-    // if answer right next question appears
-}
-
-// function selectAnswer() {
- 
-//   conditions:  if right move to next question, if wrong decrease 
-//  10seconds
-// }
 
 // function timeOut() {
 
