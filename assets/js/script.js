@@ -2,7 +2,6 @@ var startButton = document.querySelector(".start-button");
 var timerElement = document.querySelector(".timer-count");
 var timer;
 var timerCount;
-var timerDecrease;
 var score = 0;
 var results = document.querySelector(".btn");
 
@@ -51,14 +50,7 @@ var questions = [
     }
 ];
 
-//Leaderboard update
-var initals = document.querySelector(".initals");
-var score = document.querySelector("score");
-
-//reset-button for leaderboard
-var resetButton = document.querySelector(".reset-button");
-
-// functioning code
+// start code-quiz
 startButton.addEventListener('click', startGame)
 
 //WorkFlow
@@ -77,20 +69,20 @@ function showQuestion() {
     answerButtonEl2.textContent = insertQuestion.answer2;
     answerButtonEl3.textContent = insertQuestion.answer3;
     answerButtonEl4.textContent = insertQuestion.answer4;
-    if(questions.answer == answer){
-        insertQuestion.dataset.answer = answer.correct;
-    }
+    if(insertQuestion.answer == questions.answer){
+        answer.dataset = true;
+    };
     results.addEventListener('click', selectAnswer)
 }
 
 function selectAnswer() {
-    if (answer.correct = questions.answer){
+    if (insertQuestion.answer == questions.answer){
         score++;
         showQuestion()
     } else {
         timerCount-10;
     }
-}
+};
 
 // function timeOut() {
 
@@ -123,3 +115,10 @@ function startTimer() {
       }
     }, 1000);
   }
+
+  //Leaderboard update
+var initals = document.querySelector(".initals");
+var score = document.querySelector("score");
+
+//reset-button for leaderboard
+var resetButton = document.querySelector(".reset-button");
