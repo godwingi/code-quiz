@@ -75,36 +75,26 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
-      if (timerCount >= 0) {
-        if (score && timerCount > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-        }
-      }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
-        clearInterval(timer);
-      }
     }, 1000);
   }
 
 // Select Answers to determine whether you lose time or move to the next question
 function selectAnswer(event){
     var buttonEl = event.target;
-    console.log(buttonEl.innerText);
+    // console.log(buttonEl.innerText);
+    // console.log(questions[0].answer)
+    if(buttonEl.innerText === questions[questionsIndex].answer){
+        console.log("Correct!")
+        score++;
+        questionsIndex++;
+        showQuestion();
+    }
+     else {
+        console.log("Incorrect!")
+        timerCount-15;
+    }
+};
 
-//     console.log(questions[0].answer)
-//     if(buttonEl.innerText=== questions[0].answer){
-//         console.log("Correct!")
-//         questionsIndex++;
-//         showQuestion();
-//     }
-//      else {
-//         timerCount-15;
-//     }
-// };
-}
   //Display Questions and MCQ Answers
 function showQuestion() {
     // insertQuestion = questions[Math.floor(Math.random() * questions.length)];
@@ -134,8 +124,7 @@ function completeQuiz() {
     scoreEl.append(score);
     }
 
-    results.addEventListener('click', selectAnswer())
    for(var i = 0; i < results.length; i++) {
-        results[i].addEventListener('click', selectAnswer());
+        results[i].addEventListener('click', selectAnswer);
     }
     
