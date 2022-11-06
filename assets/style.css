@@ -6,45 +6,51 @@
     --byzantium: #820263;
 }
 
-/* * {
+* {
     margin: 0px;
     padding: 0px;
-} */
+}
 
+*::before, *::after {
+    box-sizing: border-box;
+}
 
 body {
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     background-color: var(--spacecadet);
+    width: 100%;
 }
 
 .title {
     padding: 50px;
-    margin: 25px;
+    margin: 10px;
     font-family: "Bangers", sans-serif;
-    box-sizing: border-box;
-    box-shadow: 10px 50px;
+    box-shadow: 0 0 10px 5px;
     background-color: var(--timberwolf);
-    width:100%;
     font-size: 52px;
     text-align: center;
 }
 
 .start-button {
     display: inline-block;
-    margin: 40px 0px 100px 0px;
+    margin: 10px 0px 20px 0px;
     padding: 10px;
-    border: solid 5px var(--timberwolf);
+    border: solid 5px var(--spacecadet);
     background-color: var(--cyberyellow);
     font-size: 36px;
     font-family: "Didact Gothic", sans-serif;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px;
 }
 
-.main {
+/* .main {
     display: flex;
-    flex-direction: row-reverse,
-}
+    flex-direction: row-reverse, 
+} */
+
 .card {
     border: solid 5px var(--cyberyellow);
     background-color: var(--timberwolf);
@@ -56,18 +62,62 @@ body {
 
 .section {
     display:flex;
+
 }
 
 .reset-button {
     display: inline-block;
     padding: 10px;
-    border: solid 5px var(--timberwolf);
+    border: solid 5px var(--spacecadet);
     background-color: var(--cyberyellow);
     font-size: 20px;
     font-family: "Didact Gothic", sans-serif;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px;
 }
 
-.mcq-questions {
+.mcq-buttons {
+    display: flex;
+}
+
+.btn {
+    border: solid 5px var(--cyberyellow);
+    background-color: var(--timberwolf);
+    margin: 10px 5px;
+    padding: 5px;
     font-size: 20px;
     font-family: "Didact Gothic", sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: var(--dwrose);
+    color: var(--timberwolf);
+}
+
+.start-button:hover {
+    background-color: var(--dwrose);
+    color: var(--timberwolf);
+}
+
+.reset-button:hover {
+    background-color: var(--dwrose);
+    color: var(--timberwolf);
+}
+
+.timer-count, h3 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+
+@media screen and {max-width: 922px}
+body {   
+    flex-direction: column;
+    flex-wrap: wrap; 
 }

@@ -12,34 +12,42 @@
   <body>
     <header>
       <div class="title">MCQ of Doom - Code Quiz</div>
-      <div><button class="start-button">Start</button></div>
     </header>
-
+    <div><button class="start-button">Start</button></div>
     <main>
       <section>
-        <div class="card mcq-questions">
-          <div class="mcq-options"></div>
-        </div>
+        <div class="card mcq-questions"> Question </div>
+          <div id="answer-buttons" class="mcq-buttons" > 
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+          <div id="results"></div>
+        
         <div class= "card timer">
             <div class = "timer-text">
-            <div class="large-font timer-count">10</div>
-            <h3>seconds remaining</h3>
+            <div class="timer-count">60</div>
+            <h3>second(s) remaining</h3>
           </div>
          </div>
       </section>
 
       <section>
         <div class="card leaderboard">
-          <div class = "leaderboard-container">
           <div class="card">
-            <div><button class="reset-button">Reset Leaderboard</button></div> 
           <h2>Initials: <span class="initials"> </span> </h2>
           <h2>Score: <span class="score">0</span></h2>
         </div>
-
+        <div class = "leaderboard-container">
+        <div class=float-left>Initials</div>
+          <div class=float-right>Score</div>
       </div>
         </div>
-      </section>
+        <div><button class="reset-button">Reset Leaderboard</button></div> 
+      
+    
+    </section>
     </main>
     <script src="assets/js/script.js"></script>
   </body>
