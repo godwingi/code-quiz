@@ -10,7 +10,7 @@ The following quiz taught me more about how functions work, breaking things down
 
 Repo link: https://github.com/godwingi/code-quiz
 
-Website link: 
+Website link: https://godwingi.github.io/code-quiz/
 
 ## Table of Contents (Optional)
 
@@ -25,7 +25,7 @@ Click the "Start" button to start the timer and the questions. There will be 5 q
 
 Here is what the landing page looks like:
 
-![Screenshot](assets/images/mcq-of-doom.png)
+![Screenshot](assets/images/mcq-of-doom-quiz.png)
 
 ## Credits
 

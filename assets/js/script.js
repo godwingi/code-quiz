@@ -71,7 +71,7 @@ startButton.addEventListener('click', startGame)
 function startGame(){
     console.log("Start!");
     startTimer();
-    timerCount = 10;
+    timerCount = 60;
     score++;
     startButton.disabled = true;
     showQuestion();
@@ -114,7 +114,7 @@ function selectAnswer(event){
     }
      else {
         console.log("Incorrect!")
-        setTimeout(timerCount, -15000);
+        timerCount -=15;
     }
 };
 
@@ -148,7 +148,7 @@ function winGame (){
 }
 
 function loseGame (){
-    timerCount = 10;
+    timerCount = 60;
     startGame;
     questionsEl.textContent = "Game Over! Try Again to Save Your Score?"
     answerButtonEl1.textContent = " ";
