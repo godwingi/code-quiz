@@ -142,7 +142,6 @@ function winGame (){
 
 function loseGame (){
     timerElement.textContent = timerCount = 0;
-    startGame;
     questionsEl.textContent = "Game Over! Try Again to Save Your Score?"
     answerButtonEl1.textContent = " Refresh ";
     answerButtonEl2.textContent = " To ";
