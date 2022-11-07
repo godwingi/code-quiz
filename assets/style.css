@@ -17,7 +17,7 @@
 
 body {
     display: flex; 
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     background-color: var(--spacecadet);
     width: 100%;
@@ -98,6 +98,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px 2px;
     outline: none;
+    align-items: center;
 }
 
 .btn:hover {

@@ -8,13 +8,10 @@ var score = 0;
 var timerElement = document.querySelector(".timer-count");
 var timer;
 var timerCount;
-var allQuestionsAnswered = false
 
 //Leaderboard variables
 var initialsEl = document.querySelector(".initials");
 var scoreEl = document.querySelector(".score");
-var leaderboardScore = document.querySelector(".float-left");
-var leaderboardInitials = document.querySelector(".float-right");
 
 // Questions that the user will be answering
 var questionsEl = document.querySelector(".mcq-questions");
@@ -24,6 +21,8 @@ var answerButtonEl3 = document.querySelector("#answer3");
 var answerButtonEl4 = document.querySelector("#answer4");
 var insertQuestion = []; //where the 'new' question needs to go
 var questionsIndex = 0;
+
+//questions that will appear on the screen
 var questions = [
     {   question: "What is a DOM?",
          answer1: "Short form of Domino",
@@ -60,8 +59,6 @@ var questions = [
          answer4: "API's",
          answer: "CSS",
     },
-    {   question: possibleWin()
-    }
 ];
 
 // start code-quiz
@@ -72,11 +69,9 @@ function startGame(){
     console.log("Start!");
     startTimer();
     timerCount = 60;
-    score++;
     startButton.disabled = true;
     showQuestion();
-}
-
+};
 
 // The setTimer function starts and stops the timer
 //     Sets timer
@@ -86,14 +81,14 @@ function startGame(){
       timerElement.textContent = timerCount;
       if (timerCount >= 0) {
         // Tests if win condition is met
-        if (questionsIndex[6] && timerCount > 0) {
+        if (questionsIndex===5 && timerCount > 0) {
           // Clears interval and stops timer
           clearInterval(timer);
           winGame();
         }
       }
       // Tests if time has run out
-      if (timerCount === 0) {
+      if (timerCount <= 0) {
         // Clears interval
         clearInterval(timer);
         loseGame();
@@ -130,17 +125,15 @@ function showQuestion() {
 
 for(var i = 0; i < results.length; i++) {
     results[i].addEventListener('click', selectAnswer);
-}
-
-function possibleWin() {
-    if (timerCount > 0){
-        winGame();
-    }
-}
+};
 
 //Win Game Prompt, and Storing Score and Name into Storage
 function winGame (){
-        questionsEl.textContent = "You Win!"
+        questionsEl.textContent = "You Win!" 
+        answerButtonEl1.textContent = " You ";
+        answerButtonEl2.textContent = " Are ";
+        answerButtonEl3.textContent = " A ";
+        answerButtonEl4.textContent = " Winner ";
         var name = window.prompt("Enter your initals");
         localStorage.setItem("Name", name);
         localStorage.setItem("score", score);
@@ -148,13 +141,13 @@ function winGame (){
 }
 
 function loseGame (){
-    timerCount = 60;
+    timerElement.textContent = timerCount = 0;
     startGame;
     questionsEl.textContent = "Game Over! Try Again to Save Your Score?"
-    answerButtonEl1.textContent = " ";
-    answerButtonEl2.textContent = " ";
-    answerButtonEl3.textContent = " ";
-    answerButtonEl4.textContent = " ";
+    answerButtonEl1.textContent = " Refresh ";
+    answerButtonEl2.textContent = " To ";
+    answerButtonEl3.textContent = " Play ";
+    answerButtonEl4.textContent = " Again ";
 }   
 
 //Displaying Stored information into leaderbaord
@@ -162,4 +155,4 @@ function setNameScore (){
     scoreEl.textContent = localStorage.getItem("score");
     initialsEl.textContent = localStorage.getItem("Name");
     setLeaderBoard()
-}
+};
